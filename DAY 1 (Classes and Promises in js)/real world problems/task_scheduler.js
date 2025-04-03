@@ -10,3 +10,19 @@ Resolve when the task is completed.
 
 🔧 Write a function that uses Promises to schedule tasks.
 */
+// Task Scheduler using Promises
+function scheduleTask(task, delay) {
+    return new Promise((resolve, reject) => {
+        if (typeof task !== 'function') {
+            return reject(new Error('Task must be a function'));
+        }
+        setTimeout(() => {
+            try {
+                task();
+                resolve('Task completed');
+            } catch (error) {
+                reject(error);
+            }
+        }, delay);
+    });
+}
